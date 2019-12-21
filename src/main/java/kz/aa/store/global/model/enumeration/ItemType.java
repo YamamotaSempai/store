@@ -1,4 +1,4 @@
-package kz.aa.store.items.model.enumeration;
+package kz.aa.store.global.model.enumeration;
 
 public enum ItemType {
     PANTS(0);
