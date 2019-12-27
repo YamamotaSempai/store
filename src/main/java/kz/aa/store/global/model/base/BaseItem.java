@@ -1,7 +1,7 @@
-package kz.aa.store.items.model;
+package kz.aa.store.global.model.base;
 
-import kz.aa.store.items.model.enumeration.ItemType;
-import kz.aa.store.items.model.enumeration.Sex;
+import kz.aa.store.global.model.enumeration.ItemType;
+import kz.aa.store.global.model.enumeration.Sex;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,5 +1,6 @@
-package kz.aa.store.items.model;
+package kz.aa.store.global.model;
 
+import kz.aa.store.global.model.base.BaseItem;
 import lombok.Getter;
 import lombok.Setter;
 
