@@ -1,9 +1,8 @@
 package kz.aa.store.rabbit.orders;
 
+import kz.aa.store.orders.model.dto.OrderDto;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class OrderSender {
@@ -13,9 +12,7 @@ public class OrderSender {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void send() {
-        String context = "hello " + LocalDateTime.now();
-        System.out.println("Sender : " + context);
-        this.rabbitTemplate.convertAndSend("hello", context);
+    public void send(OrderDto orderDto) {
+        this.rabbitTemplate.convertAndSend("ORDERS", orderDto);
     }
 }
