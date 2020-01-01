@@ -13,7 +13,6 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Pants extends BaseItem {
-    private long length;
-    private long weight;
-
+    private String length;
+    private String weight;
 }
