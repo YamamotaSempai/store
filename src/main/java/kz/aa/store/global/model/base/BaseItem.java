@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-@Entity(name = "base_entity")
+@Entity(name = "base_item")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class BaseItem {
     @Id

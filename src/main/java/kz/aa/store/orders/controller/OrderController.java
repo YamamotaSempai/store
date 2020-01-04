@@ -28,6 +28,6 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDto orderDto,
                                          Principal principal) {
-        return ResponseEntity.ok(ordersService.saveOrder(orderDto, "test"));
+        return ResponseEntity.ok(ordersService.createOrder(orderDto, "test"));
     }
 }

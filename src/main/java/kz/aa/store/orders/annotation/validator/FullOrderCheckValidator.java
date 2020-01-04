@@ -2,15 +2,10 @@ package kz.aa.store.orders.annotation.validator;
 
 import kz.aa.store.orders.annotation.FullOrderCheck;
 import kz.aa.store.orders.model.dto.OrderDto;
-import kz.aa.store.orders.model.dto.OrderItem;
+import kz.aa.store.orders.model.dto.OrderItemDto;
 
-import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.util.List;
 
 public class FullOrderCheckValidator implements ConstraintValidator<FullOrderCheck, OrderDto> {
@@ -28,7 +23,7 @@ public class FullOrderCheckValidator implements ConstraintValidator<FullOrderChe
                     .addConstraintViolation();
             return false;
         }
-        if (orderDto.getOrderItemList() == null || checkAllOrderItem(orderDto.getOrderItemList())) {
+        if (orderDto.getOrderItemDtoList() == null || checkAllOrderItem(orderDto.getOrderItemDtoList())) {
             constraintValidatorContext.buildConstraintViolationWithTemplate("Проверьте заполненные данные")
                     .addConstraintViolation();
             return false;
@@ -37,9 +32,9 @@ public class FullOrderCheckValidator implements ConstraintValidator<FullOrderChe
         return true;
     }
 
-    private boolean checkAllOrderItem(List<OrderItem> orderItems) {
-        for (OrderItem orderItem : orderItems) {
-            if (orderItem.getId() == null)
+    private boolean checkAllOrderItem(List<OrderItemDto> orderItemDtos) {
+        for (OrderItemDto orderItemDto : orderItemDtos) {
+            if (orderItemDto.getId() == null)
                 return true;
         }
 

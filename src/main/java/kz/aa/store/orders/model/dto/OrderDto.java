@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @FullOrderCheck
 public class OrderDto implements Serializable {
-    private List<OrderItem> orderItemList;
+    private List<OrderItemDto> orderItemDtoList;
     private String address;
     private PaymentType paymentType;
 
