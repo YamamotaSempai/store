@@ -18,11 +18,13 @@ public class OrdersService {
 
     private final OrderJdbcRepository orderJdbcRepository;
     private final OrderSender orderSender;
+    private final BasketService basketService;
 
     @Autowired
-    public OrdersService(OrderJdbcRepository orderJdbcRepository, OrderSender orderSender) {
+    public OrdersService(OrderJdbcRepository orderJdbcRepository, OrderSender orderSender, BasketService basketService) {
         this.orderJdbcRepository = orderJdbcRepository;
         this.orderSender = orderSender;
+        this.basketService = basketService;
     }
 
     public Page<Order> getAllOrdersByUser(String username, Pageable pageable) {
@@ -33,10 +35,11 @@ public class OrdersService {
         return new PageImpl<>(content, pageable, count);
     }
 
-    public OrderDto saveOrder(OrderDto orderDto, String username) {
+    public OrderDto createOrder(OrderDto orderDto, String username) {
         Long id = preSaveOrder(username);
         orderDto.setOrderId(id);
         orderSender.send(orderDto);
+        basketService.resetBasket(username);
         return orderDto;
     }
 
