@@ -1,5 +1,6 @@
 package kz.aa.store;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kz.aa.store.global.proxy.NamedParameterJdbcTemplateProxy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,5 +26,10 @@ public class StoreApplication {
 	@Bean
 	public NamedParameterJdbcTemplateProxy detectorJdbcProxy() {
 		return new NamedParameterJdbcTemplateProxy(applicationContext.getBean(NamedParameterJdbcTemplate.class));
+	}
+
+	@Bean
+	public ObjectMapper objectMapper() {
+		return new ObjectMapper();
 	}
 }
